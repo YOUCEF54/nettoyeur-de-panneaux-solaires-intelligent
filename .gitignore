@@ -1,0 +1,14 @@
+# Environnements
+.venv*/
+__pycache__/
+
+# Fichiers lourds
+*.h5
+*.keras
+*.zip
+
+# Cache / Logs
+*.log
+*.tmp
+.DS_Store
+.ipynb_checkpoints/
