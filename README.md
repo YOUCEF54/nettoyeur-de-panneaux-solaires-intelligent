@@ -12,7 +12,10 @@ Projet académique (Master M2 ADIA) combinant **Intelligence Artificielle** et *
 - Communication : Cloud (FastAPI / MQTT)
 - Objectif : déclencher le nettoyage automatique après détection
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6cf9494a1d0a9d738a0d4b8714b54977a503a981
 ## Auteur
 
 Youcef EL OMARI – Master ADIA, Université Ibn Zohr (2025)

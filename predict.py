@@ -23,12 +23,11 @@ def predict_panel(panel_id, image_source):
     image_source : chemin d'image ou image encodée en base64
     """
 
+    # Si image est envoyée en base64 → la décoder
     if isinstance(image_source, str) and image_source.startswith("data:image"):
         header, encoded = image_source.split(",", 1)
         image_bytes = base64.b64decode(encoded)
         img = Image.open(io.BytesIO(image_bytes)).convert("RGB")
-
-   
     else:
         img = Image.open(image_source).convert("RGB")
 
@@ -37,24 +36,31 @@ def predict_panel(panel_id, image_source):
     img_array = np.array(img) / 255.0
     img_array = np.expand_dims(img_array, axis=0)
 
-    # Prédiction
-    preds = model.predict(img_array)
-    predicted_index = np.argmax(preds[0])
+    # Prédiction (pas de second softmax)
+    preds = model.predict(img_array)[0]
+
+    predicted_index = np.argmax(preds)
     predicted_class = CATEGORIES[predicted_index]
-    confidence = float(np.max(preds[0]))
+    confidence = float(np.max(preds))
+
+    # ✅ Ajout des scores de toutes les classes (arrondies à 4 décimales)
+    all_scores = {
+        CATEGORIES[i]: round(float(preds[i]), 4) for i in range(len(CATEGORIES))
+    }
 
     plt.imshow(image.load_img(image_source))
     plt.title(f"Prediction: {predicted_class} ({confidence*100:.2f}%)")
     plt.axis("off")
     plt.show()
-    # Réponse JSON standardisée
 
     return {
         "panel_id": panel_id,
         "predicted_class": predicted_class,
         "confidence": round(confidence * 100, 2),
-        "status": "dirty" if predicted_class != "Clean" else "clean"
+        "status": "dirty" if predicted_class != "Clean" else "clean",
+        "all_scores": all_scores  
     }
+
 
 # Exemple d'utilisation en local
 if __name__ == "__main__":
