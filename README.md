@@ -12,12 +12,6 @@ Projet académique (Master M2 ADIA) combinant **Intelligence Artificielle** et *
 - Communication : Cloud (FastAPI / MQTT)
 - Objectif : déclencher le nettoyage automatique après détection
 
-## Structure du dépôt
-Le_Projet/
-├── src/notebooks/ # Entraînement du modèle
-├── model/ # Modèle sauvegardé (.keras)
-├── predict.py # Script de prédiction
-└── images/ # Images de test
 
 ## Auteur
 

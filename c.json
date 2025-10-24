@@ -1,0 +1,27 @@
+{
+  "camera_id": "ZoneA-Cam1",
+  "timestamp": "2025-10-23T14:05:00Z",
+  "panels": [
+    {
+      "panel_id": "R1C1",
+      "prediction": "Propre",
+      "confidence": 0.97,
+      "bbox": [100, 80, 300, 260],
+      "recommended_action": "Aucune action"
+    },
+    {
+      "panel_id": "R1C2",
+      "prediction": "Poussiéreux",
+      "confidence": 0.91,
+      "bbox": [300, 80, 500, 260],
+      "recommended_action": "Nettoyage requis"
+    },
+    {
+      "panel_id": "R2C1",
+      "prediction": "Couvert de neige",
+      "confidence": 0.89,
+      "bbox": [100, 260, 300, 440],
+      "recommended_action": "Nettoyage requis"
+    }
+  ]
+}
